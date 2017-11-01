@@ -1,0 +1,9 @@
+D:\Projects\Scoring System\Scoring System\bin\Debug\Scoring System.exe.config
+D:\Projects\Scoring System\Scoring System\bin\Debug\Scoring System.exe
+D:\Projects\Scoring System\Scoring System\bin\Debug\Scoring System.pdb
+D:\Projects\Scoring System\Scoring System\obj\Debug\Scoring System.csprojResolveAssemblyReference.cache
+D:\Projects\Scoring System\Scoring System\obj\Debug\Scoring_System.Form1.resources
+D:\Projects\Scoring System\Scoring System\obj\Debug\Scoring_System.Properties.Resources.resources
+D:\Projects\Scoring System\Scoring System\obj\Debug\Scoring System.csproj.GenerateResource.Cache
+D:\Projects\Scoring System\Scoring System\obj\Debug\Scoring System.exe
+D:\Projects\Scoring System\Scoring System\obj\Debug\Scoring System.pdb
