@@ -10,7 +10,6 @@ class Trainee : IComparable
     static public int ActiveScore = 0;
     public string Name;
     public int Score;
-    private bool LastButtonState;
     private Label ScoreLabel;
     private Label NameLabel;
     private Button AddButton;
@@ -21,7 +20,6 @@ class Trainee : IComparable
     {
         Name = "";
         Score = 0;
-        LastButtonState = true;
     }
     public void Draw(ref int offset, Panel Parent, MainForm ParentF)
     {
@@ -43,7 +41,6 @@ class Trainee : IComparable
         {
             Text = "Add",
             Location = new System.Drawing.Point(419, 5 + offset),
-            Enabled = LastButtonState
         };
         AddButton.Click += AddButtonClick;
         Parent.Controls.Add(AddButton);
@@ -63,12 +60,21 @@ class Trainee : IComparable
         Parent.Controls.Add(BonusButton);
         offset += 25;
     }
+    public void ResetLocation(int offset)
+    {
+        NameLabel.Location = new System.Drawing.Point(53, 5 + offset);
+        ScoreLabel.Location = new System.Drawing.Point(250, 5 + offset);
+        AddButton.Location = new System.Drawing.Point(419, 5 + offset);
+        SubtractButton.Location = new System.Drawing.Point(500, 5 + offset);
+        BonusButton.Location = new System.Drawing.Point(580, 5 + offset);
+    }
     private void BonusButton_Click(object sender, EventArgs e)
     {
         Score += 7;
-        if(IsContestRunning)
+        ScoreLabel.Text = Score.ToString();
+        if (IsContestRunning)
         {
-            LastButtonState = false;
+            AddButton.Enabled = false;
         }
         ParentForm.SortTrainees();
     }
@@ -83,11 +89,11 @@ class Trainee : IComparable
     public void SetAddButtonActive()
     {
         AddButton.Enabled = true;
-        LastButtonState = true;
     }
     private void SubtractButtonClick(object sender, EventArgs e)
     {
         Score--;
+        ScoreLabel.Text = Score.ToString();
         ParentForm.SortTrainees();
     }
     private void AddButtonClick(object sender, EventArgs e)
@@ -98,14 +104,15 @@ class Trainee : IComparable
             {
                 Score += ActiveScore;
                 ActiveScore--;
+                ScoreLabel.Text = Score.ToString();
                 ParentForm.SortTrainees();
                 AddButton.Enabled = false;
-                LastButtonState = false;
             }
         }
         else
         {
             Score++;
+            ScoreLabel.Text = Score.ToString();
             ParentForm.SortTrainees();
         }
     }

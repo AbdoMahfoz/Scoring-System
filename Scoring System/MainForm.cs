@@ -57,15 +57,12 @@ namespace Scoring_System
         public void SortTrainees()
         {
             SuspendLayout();
-            foreach(Trainee t in Trainees)
-            {
-                t.Clear(ActionPanel);
-            }
             Trainees.Sort();
             int offset = 0;
             foreach(Trainee t in Trainees)
             {
-                t.Draw(ref offset, ActionPanel, this);
+                t.ResetLocation(offset);
+                offset += 25;
             }
             ResumeLayout();
         }
