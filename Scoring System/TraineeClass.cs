@@ -42,6 +42,7 @@ public class Trainee : IComparable
         {
             Text = "Add",
             Location = new System.Drawing.Point(350, 2 + offset),
+            FlatStyle = FlatStyle.System
         };
         AddButton.Click += AddButtonClick;
         Parent.Controls.Add(AddButton);
@@ -49,20 +50,23 @@ public class Trainee : IComparable
         {
             Text = "Subtract",
             Location = new System.Drawing.Point(430, 2 + offset),
+            FlatStyle = FlatStyle.System
         };
         SubtractButton.Click += SubtractButtonClick;
         Parent.Controls.Add(SubtractButton);
         BonusButton = new Button()
         {
             Text = "Bonus",
-            Location = new System.Drawing.Point(510, 2 + offset)
+            Location = new System.Drawing.Point(510, 2 + offset),
+            FlatStyle = FlatStyle.System
         };
         BonusButton.Click += BonusButton_Click;
         Parent.Controls.Add(BonusButton);
         DeleteButton = new Button()
         {
             Text = "Delete",
-            Location = new System.Drawing.Point(590, 2 + offset)
+            Location = new System.Drawing.Point(590, 2 + offset),
+            FlatStyle = FlatStyle.System
         };
         DeleteButton.Click += DeleteButton_Click;
         Parent.Controls.Add(DeleteButton);

@@ -98,6 +98,7 @@
             // 
             // StartContestButton
             // 
+            this.StartContestButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.StartContestButton.Location = new System.Drawing.Point(223, 17);
             this.StartContestButton.Name = "StartContestButton";
             this.StartContestButton.Size = new System.Drawing.Size(100, 20);
@@ -136,6 +137,7 @@
             // 
             // DynamicAddTraineeButton
             // 
+            this.DynamicAddTraineeButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.DynamicAddTraineeButton.Location = new System.Drawing.Point(602, 14);
             this.DynamicAddTraineeButton.Name = "DynamicAddTraineeButton";
             this.DynamicAddTraineeButton.Size = new System.Drawing.Size(75, 23);
