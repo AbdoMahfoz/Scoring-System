@@ -6,60 +6,51 @@ namespace Scoring_System
     public partial class MainForm : Form
     {
         private List<Trainee> Trainees;
+        int offset = 0;
         public MainForm()
         {
             Trainees = new List<Trainee>();
             InitializeComponent();
         }
-        private void AddTraineeButton_Click(object sender, System.EventArgs e)
+        private void DynamicAddTraineeButton_Click(object sender, System.EventArgs e)
         {
-            if (!string.IsNullOrEmpty(NameTextBox.Text))
+            if (DynamicTraineeText.Text != "")
             {
-                Trainees.Add(new Trainee()
+                Trainees.Add(new Trainee
                 {
-                    Name = NameTextBox.Text
+                    Name = DynamicTraineeText.Text
                 });
-                NameTextBox.Text = "";
-                NameTextBox.Focus();
+                Trainees[Trainees.Count - 1].Draw(ref offset, ActionPanel, this);
+                DynamicTraineeText.Text = "";
+                DynamicTraineeText.Focus();
             }
         }
-        private void FinishButton_Click(object sender, System.EventArgs e)
-        {
-            ActionPanelHelper.Visible = true;
-            ActionPanel.Visible = true;
-            RegisterationPanel.Visible = false;
-        }
-        private void ActionPanel_VisibleChanged(object sender, System.EventArgs e)
-        {
-            if (ActionPanel.Visible)
-            {
-                int offset = 0;
-                foreach (Trainee s in Trainees)
-                {
-                    s.Draw(ref offset, ActionPanel, this);
-                }
-            }
-            else
-            {
-                foreach (Trainee s in Trainees)
-                {
-                    s.Clear(ActionPanel);
-                }
-            }
-        }
-        private void NameTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void DynamicTraineeText_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                AddTraineeButton.PerformClick();
+                DynamicAddTraineeButton.PerformClick();
             }
         }
         public void SortTrainees()
         {
             SuspendLayout();
             Trainees.Sort();
-            int offset = 0;
+            offset = 0;
             foreach(Trainee t in Trainees)
+            {
+                t.ResetLocation(offset);
+                offset += 25;
+            }
+            ResumeLayout();
+        }
+        public void ClearTrainee(Trainee trainee)
+        {
+            SuspendLayout();
+            trainee.Clear(ActionPanel);
+            Trainees.Remove(trainee);
+            offset = 0;
+            foreach (Trainee t in Trainees)
             {
                 t.ResetLocation(offset);
                 offset += 25;

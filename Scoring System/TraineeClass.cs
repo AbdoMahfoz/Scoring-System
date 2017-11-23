@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Scoring_System;
 
-class Trainee : IComparable
+public class Trainee : IComparable
 {
     static public bool IsContestRunning = false;
     static public int RemainingMinutes = 0;
@@ -15,6 +15,7 @@ class Trainee : IComparable
     private Button AddButton;
     private Button SubtractButton;
     private Button BonusButton;
+    private Button DeleteButton;
     private MainForm ParentForm;
     public Trainee()
     {
@@ -40,33 +41,41 @@ class Trainee : IComparable
         AddButton = new Button()
         {
             Text = "Add",
-            Location = new System.Drawing.Point(419, 5 + offset),
+            Location = new System.Drawing.Point(350, 2 + offset),
         };
         AddButton.Click += AddButtonClick;
         Parent.Controls.Add(AddButton);
         SubtractButton = new Button()
         {
             Text = "Subtract",
-            Location = new System.Drawing.Point(500, 5 + offset),
+            Location = new System.Drawing.Point(430, 2 + offset),
         };
         SubtractButton.Click += SubtractButtonClick;
         Parent.Controls.Add(SubtractButton);
         BonusButton = new Button()
         {
             Text = "Bonus",
-            Location = new System.Drawing.Point(580, 5 + offset)
+            Location = new System.Drawing.Point(510, 2 + offset)
         };
         BonusButton.Click += BonusButton_Click;
         Parent.Controls.Add(BonusButton);
+        DeleteButton = new Button()
+        {
+            Text = "Delete",
+            Location = new System.Drawing.Point(590, 2 + offset)
+        };
+        DeleteButton.Click += DeleteButton_Click;
+        Parent.Controls.Add(DeleteButton);
         offset += 25;
     }
     public void ResetLocation(int offset)
     {
         NameLabel.Location = new System.Drawing.Point(53, 5 + offset);
         ScoreLabel.Location = new System.Drawing.Point(250, 5 + offset);
-        AddButton.Location = new System.Drawing.Point(419, 5 + offset);
-        SubtractButton.Location = new System.Drawing.Point(500, 5 + offset);
-        BonusButton.Location = new System.Drawing.Point(580, 5 + offset);
+        AddButton.Location = new System.Drawing.Point(350, 2 + offset);
+        SubtractButton.Location = new System.Drawing.Point(430, 2 + offset);
+        BonusButton.Location = new System.Drawing.Point(510, 2 + offset);
+        DeleteButton.Location = new System.Drawing.Point(590, 2 + offset);
     }
     private void BonusButton_Click(object sender, EventArgs e)
     {
@@ -85,6 +94,7 @@ class Trainee : IComparable
         Parent.Controls.Remove(AddButton);
         Parent.Controls.Remove(SubtractButton);
         Parent.Controls.Remove(BonusButton);
+        Parent.Controls.Remove(DeleteButton);
     }
     public void SetAddButtonActive()
     {
@@ -115,6 +125,10 @@ class Trainee : IComparable
             ScoreLabel.Text = Score.ToString();
             ParentForm.SortTrainees();
         }
+    }
+    private void DeleteButton_Click(object sender, EventArgs e)
+    {
+        ParentForm.ClearTrainee(this);
     }
     public int CompareTo(object obj)
     {
