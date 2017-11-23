@@ -34,18 +34,20 @@ namespace Scoring_System
         }
         public void SortTrainees()
         {
+            ActionPanel.AutoScrollPosition = new System.Drawing.Point(0, 0);
             SuspendLayout();
             Trainees.Sort();
             offset = 0;
             foreach(Trainee t in Trainees)
             {
-                t.ResetLocation(offset);
+                t.ResetLocation(offset + ActionPanel.AutoScrollPosition.Y);
                 offset += 25;
             }
             ResumeLayout();
         }
         public void ClearTrainee(Trainee trainee)
         {
+            ActionPanel.AutoScrollPosition = new System.Drawing.Point(0, 0);
             SuspendLayout();
             trainee.Clear(ActionPanel);
             Trainees.Remove(trainee);
