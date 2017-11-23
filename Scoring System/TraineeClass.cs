@@ -17,8 +17,10 @@ public class Trainee : IComparable
     private Button BonusButton;
     private Button DeleteButton;
     private MainForm ParentForm;
-    public Trainee()
+    private HelpProvider help;
+    public Trainee(HelpProvider h)
     {
+        help = h;
         Name = "";
         Score = 0;
     }
@@ -50,7 +52,7 @@ public class Trainee : IComparable
         {
             Text = "Subtract",
             Location = new System.Drawing.Point(430, 2 + offset),
-            FlatStyle = FlatStyle.System
+            FlatStyle = FlatStyle.System,
         };
         SubtractButton.Click += SubtractButtonClick;
         Parent.Controls.Add(SubtractButton);
@@ -71,6 +73,16 @@ public class Trainee : IComparable
         DeleteButton.Click += DeleteButton_Click;
         Parent.Controls.Add(DeleteButton);
         offset += 25;
+        help.SetHelpString(AddButton, "Adds score to the associated trainee\nThe added score is 1 if no contest is runnning\n" +
+                        "The added score is 5 if a contest is running and the associated trainee is the first to solve\n" +
+                        "The added score is 4 if a contest is running and the associated trainee is the second to solve\n" +
+                        "The added score is 3 if a contest is running and the associated trainee is the third to solve\n" +
+                        "The added score is 2 if a contest is running and the associated trainee is the forth to solve\n" +
+                        "The added score is 1 if a contest is running and the associated trainee is the fifth to solve\n" +
+                        "Button has no effect if a contest is running and five trainees already solved the problem");
+        help.SetHelpString(SubtractButton, "Subtracts 1 regardless of the contest status");
+        help.SetHelpString(BonusButton, "Adds 7 points\nIf a contest is running, the trainee is considered to have solved the problem");
+        help.SetHelpString(DeleteButton, "Deletes the associated trainee (Can't be undone)");
     }
     public void ResetLocation(int offset)
     {

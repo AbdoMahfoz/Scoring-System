@@ -41,6 +41,7 @@
             this.DynamicAddTraineeButton = new System.Windows.Forms.Button();
             this.DummySeprator = new System.Windows.Forms.Label();
             this.SecondsCounter = new System.Windows.Forms.NumericUpDown();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.MinutesCounter)).BeginInit();
             this.ActionPanelHelper.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SecondsCounter)).BeginInit();
@@ -68,10 +69,10 @@
             this.Spacer.AutoSize = true;
             this.Spacer.Location = new System.Drawing.Point(23, 79);
             this.Spacer.Name = "Spacer";
-            this.Spacer.Size = new System.Drawing.Size(637, 13);
+            this.Spacer.Size = new System.Drawing.Size(649, 13);
             this.Spacer.TabIndex = 4;
             this.Spacer.Text = "_________________________________________________________________________________" +
-    "________________________";
+    "__________________________";
             // 
             // DummyLabel
             // 
@@ -80,11 +81,12 @@
             this.DummyLabel.Name = "DummyLabel";
             this.DummyLabel.Size = new System.Drawing.Size(485, 13);
             this.DummyLabel.TabIndex = 3;
-            this.DummyLabel.Text = "   Name                                                    Score                 " +
+            this.DummyLabel.Text = "   Name                                                      Score               " +
     "                                                        Controls";
             // 
             // MinutesCounter
             // 
+            this.helpProvider1.SetHelpString(this.MinutesCounter, "Minutes counter");
             this.MinutesCounter.Location = new System.Drawing.Point(78, 17);
             this.MinutesCounter.Maximum = new decimal(new int[] {
             1000,
@@ -92,6 +94,7 @@
             0,
             0});
             this.MinutesCounter.Name = "MinutesCounter";
+            this.helpProvider1.SetShowHelp(this.MinutesCounter, true);
             this.MinutesCounter.Size = new System.Drawing.Size(54, 20);
             this.MinutesCounter.TabIndex = 2;
             this.MinutesCounter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MinutesCounter_KeyDown);
@@ -99,8 +102,10 @@
             // StartContestButton
             // 
             this.StartContestButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.helpProvider1.SetHelpString(this.StartContestButton, "Starts a contest with the specified time on it\'s left (minutes:seconds)");
             this.StartContestButton.Location = new System.Drawing.Point(223, 17);
             this.StartContestButton.Name = "StartContestButton";
+            this.helpProvider1.SetShowHelp(this.StartContestButton, true);
             this.StartContestButton.Size = new System.Drawing.Size(100, 20);
             this.StartContestButton.TabIndex = 0;
             this.StartContestButton.Text = "Start Contest";
@@ -129,8 +134,10 @@
             // 
             // DynamicTraineeText
             // 
+            this.helpProvider1.SetHelpString(this.DynamicTraineeText, "Trainee name to be added");
             this.DynamicTraineeText.Location = new System.Drawing.Point(496, 16);
             this.DynamicTraineeText.Name = "DynamicTraineeText";
+            this.helpProvider1.SetShowHelp(this.DynamicTraineeText, true);
             this.DynamicTraineeText.Size = new System.Drawing.Size(100, 20);
             this.DynamicTraineeText.TabIndex = 9;
             this.DynamicTraineeText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DynamicTraineeText_KeyDown);
@@ -138,8 +145,11 @@
             // DynamicAddTraineeButton
             // 
             this.DynamicAddTraineeButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.helpProvider1.SetHelpString(this.DynamicAddTraineeButton, "Adds a trainee to the contest with the name specified in the text box to it\'s lef" +
+        "t");
             this.DynamicAddTraineeButton.Location = new System.Drawing.Point(602, 14);
             this.DynamicAddTraineeButton.Name = "DynamicAddTraineeButton";
+            this.helpProvider1.SetShowHelp(this.DynamicAddTraineeButton, true);
             this.DynamicAddTraineeButton.Size = new System.Drawing.Size(75, 23);
             this.DynamicAddTraineeButton.TabIndex = 8;
             this.DynamicAddTraineeButton.Text = "Add Trainee";
@@ -158,8 +168,10 @@
             // 
             // SecondsCounter
             // 
+            this.helpProvider1.SetHelpString(this.SecondsCounter, "Seconds counter");
             this.SecondsCounter.Location = new System.Drawing.Point(158, 17);
             this.SecondsCounter.Name = "SecondsCounter";
+            this.helpProvider1.SetShowHelp(this.SecondsCounter, true);
             this.SecondsCounter.Size = new System.Drawing.Size(54, 20);
             this.SecondsCounter.TabIndex = 6;
             this.SecondsCounter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SecondsCounter_KeyDown);
@@ -171,7 +183,11 @@
             this.ClientSize = new System.Drawing.Size(683, 379);
             this.Controls.Add(this.ActionPanelHelper);
             this.Controls.Add(this.ActionPanel);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.HelpButton = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Text = "Scoring System";
             ((System.ComponentModel.ISupportInitialize)(this.MinutesCounter)).EndInit();
@@ -195,6 +211,7 @@
         private System.Windows.Forms.NumericUpDown SecondsCounter;
         private System.Windows.Forms.TextBox DynamicTraineeText;
         private System.Windows.Forms.Button DynamicAddTraineeButton;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }
 

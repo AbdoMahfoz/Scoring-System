@@ -17,7 +17,7 @@ namespace Scoring_System
             if (DynamicTraineeText.Text != "")
             {
                 ActionPanel.AutoScrollPosition = new System.Drawing.Point(0, 0);
-                Trainees.Add(new Trainee
+                Trainees.Add(new Trainee(helpProvider1)
                 {
                     Name = DynamicTraineeText.Text
                 });
